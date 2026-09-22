@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <title>PC MAX - PS4 Host</title>
 <script src="jb.js"></script>
 <script src="core.js"></script>
 <style>
-  body { background: #141414; color: white; font-family: sans-serif; text-align: center; margin: 0; padding-top: 60px; }
-  #pcmax-banner { position: fixed; top: 0; left: 0; width: 100%; background: #0a0a0a; border-bottom: 2px solid #00acff; padding: 10px 0; z-index: 9999; }
-  #pcmax-banner h2 { margin: 0; color: #00acff; font-size: 20px; }
-  #pcmax-banner p { margin: 3px 0 0; color: #ccc; font-size: 13px; }
+  body { background: #000; color: #fff; font-family: sans-serif; text-align: center; margin: 0; }
+  #pcmax-header { background: #111; border-bottom: 2px solid #38bdf8; padding: 12px; margin-bottom: 20px; }
+  #pcmax-header h2 { margin: 0; color: #38bdf8; font-size: 22px; }
+  #pcmax-header p { margin: 4px 0 0; color: #94a3b8; font-size: 14px; }
 </style>
 </head>
-<body onload="go()">
+<body>
 
-<div id="pcmax-banner">
+<div id="pcmax-header">
   <h2>🎮 PC MAX</h2>
   <p>إشراف: خليل | 📞 0937200365</p>
 </div>
 
-<!-- بقية أكواد الثغرة الأصلية تعمل هنا بشكل طبيعي دون أي تعارض -->
-<div id="loader" style="margin-top: 50px;">
-  <h2>جاري تحميل النظام...</h2>
+<!-- المحتوى الأصلي للثغرة -->
+<div id="loading">
+  <h3>جاري تحميل التعديلة... يرجى الانتظار</h3>
 </div>
+
+<script>
+  // استدعاء دالة التشغيل التلقائي الصحيحة المتوافقة مع ملفات الـ JS لديك
+  window.onload = function() {
+    try {
+      if (typeof poc === 'function') {
+        poc();
+      } else if (typeof main === 'function') {
+        main();
+      }
+    } catch(err) {
+      console.log(err);
+    }
+  };
+</script>
 
 </body>
 </html>
