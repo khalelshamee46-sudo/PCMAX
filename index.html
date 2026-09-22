@@ -10,15 +10,13 @@
   #brand .icon { font-size:22px; vertical-align:middle; margin-left:6px; }
   #brand b { font-size:18px; font-weight:700; letter-spacing:.1em; color:#38bdf8; vertical-align:middle; display:inline-block; }
   #brand .info { font-size:12px; color:#94a3b8; margin-top:2px; font-weight:normal; }
-  #content { margin-top:65px; padding:20px; text-align:center; }
-  .btn { background:#38bdf8; color:#0b0d10; border:none; padding:12px 24px; font-size:16px; font-weight:bold; border-radius:6px; cursor:pointer; margin:10px; }
-  .btn:hover { background:#0ea5e9; }
-  #msgs { margin-top:15px; font-size:14px; color:#7fd0a0; }
+  #content { margin-top:70px; padding:20px; text-align:center; }
+  #msgs { font-size:16px; color:#7fd0a0; margin-top:20px; font-weight:bold; }
 </style>
 <script src="jb.js"></script>
 <script src="core.js"></script>
 </head>
-<body>
+<body onload="rop()">
 
 <div id="brand">
   <span class="icon">🎮</span>
@@ -27,20 +25,19 @@
 </div>
 
 <div id="content">
-  <h2 id="atext" style="color:#f8fafc; font-size:20px; margin-bottom:10px;">جاري تحميل نظام التعديل...</h2>
-  <div id="msgs">يرجى الانتظار قليلاً حتى تكتمل الثغرة</div>
-  <br>
-  <button class="btn" onclick="load_goldhen()">تفعيل GoldHEN</button>
+  <h2 style="color:#f8fafc; font-size:20px;">جاري تحميل وتفعيل التعديلة تلقائياً...</h2>
+  <div id="msgs">يرجى الانتظار وعدم إغلاق المتصفح حتى تكتمل العملية</div>
 </div>
 
 <script>
-  function load_goldhen() {
-    document.getElementById("msgs.innerHTML} = "جاري تفعيل الحماية وتثبيت الـ Payload...";
-    // استدعاء ملف الـ payload أو التعديلة الموجود في المستودع
-    var script = document.createElement('script');
-    script.src = 'goldhen.bin'; // أو اسم ملف التشغيل لديك
-    document.body.appendChild(script);
-  }
+  // بدء تنفيذ الثغرة وتفعيل الـ Payload تلقائياً بمجرد تحميل الصفحة
+  window.addEventListener('load', function () {
+    setTimeout(function() {
+      var s = document.createElement('script');
+      s.src = 'goldhen.bin';
+      document.body.appendChild(s);
+    }, 1500);
+  });
 </script>
 
 </body>
