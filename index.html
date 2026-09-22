@@ -11,12 +11,14 @@
   #brand b { font-size:18px; font-weight:700; letter-spacing:.1em; color:#38bdf8; vertical-align:middle; display:inline-block; }
   #brand .info { font-size:12px; color:#94a3b8; margin-top:2px; font-weight:normal; }
   #content { margin-top:70px; padding:20px; text-align:center; }
-  #msgs { font-size:16px; color:#7fd0a0; margin-top:20px; font-weight:bold; }
+  .btn { background:#38bdf8; color:#0b0d10; border:none; padding:12px 30px; font-size:16px; font-weight:bold; border-radius:6px; cursor:pointer; margin-top:15px; box-shadow: 0 4px 12px rgba(56,189,248,0.3); }
+  .btn:hover { background:#0ea5e9; }
+  #msgs { margin-top:15px; font-size:15px; color:#7fd0a0; }
 </style>
 <script src="jb.js"></script>
 <script src="core.js"></script>
 </head>
-<body onload="rop()">
+<body>
 
 <div id="brand">
   <span class="icon">🎮</span>
@@ -25,19 +27,31 @@
 </div>
 
 <div id="content">
-  <h2 style="color:#f8fafc; font-size:20px;">جاري تحميل وتفعيل التعديلة تلقائياً...</h2>
-  <div id="msgs">يرجى الانتظار وعدم إغلاق المتصفح حتى تكتمل العملية</div>
+  <h2 style="color:#f8fafc; font-size:19px; margin-bottom:5px;">جاهز لتشغيل التعديلة</h2>
+  <div id="msgs">اضغط على الزر أدناه لبدء تفعيل الـ GoldHEN</div>
+  <br>
+  <button class="btn" onclick="runExploit()">تفعيل التعديلة الآن</button>
 </div>
 
 <script>
-  // بدء تنفيذ الثغرة وتفعيل الـ Payload تلقائياً بمجرد تحميل الصفحة
-  window.addEventListener('load', function () {
-    setTimeout(function() {
-      var s = document.createElement('script');
-      s.src = 'goldhen.bin';
-      document.body.appendChild(s);
-    }, 1500);
-  });
+  function runExploit() {
+    document.getElementById('msgs').innerText = "جاري تفعيل الثغرة، يرجى الانتظار...";
+    try {
+      // استدعاء دالة التشغيل الأساسية الموجودة في ملفات الـ JS الخاصة بك
+      if (typeof poc === 'function') {
+        poc();
+      } else if (typeof main === 'function') {
+        main();
+      } else {
+        // طريقة بديلة لتحميل ملف الـ Payload مباشرة إذا لم تتوفر الدالة
+        var s = document.createElement('script');
+        s.src = 'goldhen.bin';
+        document.body.appendChild(s);
+      }
+    } catch(e) {
+      document.getElementById('msgs').innerText = "خطأ في التفعيل، إعادة محاولة...";
+    }
+  }
 </script>
 
 </body>
