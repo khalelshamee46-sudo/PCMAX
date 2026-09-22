@@ -1,30 +1,47 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" manifest="cache.appcache">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PC MAX - Host</title>
+<title>PC MAX - PS4 Host</title>
 <style>
-  html, body { margin:0; padding:0; background:#0b0d10; color:#c8ced8;
-               font:15px/1.45 "Segoe UI", system-ui, sans-serif; }
-  #wrap { padding:16px 18px; }
-  #state { font-size:22px; font-weight:700; margin:0 0 6px; }
-  #det { font-size:13px; color:#8b95a3; margin:0 0 4px; }
-  #det b { color:#c8ced8; font-weight:600; }
-  #cache { font-size:12px; color:#5c6672; margin:0 0 10px; min-height:14px; }
-  #cache.cacheok { color:#7fd0a0; }
-  .ok { color:#7fd0a0; } .bad { color:#d08a7f; } .warn { color:#d8c07f; }
-  #brand { text-align:center; padding:12px 10px; background:#0e1116;
-           border-bottom:1px solid #1e2732; }
-  #brand .icon { font-size:24px; vertical-align:middle; margin-left:6px; }
-  #brand b { font-size:20px; font-weight:700; letter-spacing:.1em;
-             color:#38bdf8; vertical-align:middle; display:inline-block; }
-  #brand .info { font-size:13px; color:#94a3b8; margin-top:4px; font-weight:normal; }
+  html, body { margin:0; padding:0; background:#0b0d10; color:#c8ced8; font:15px/1.45 "Segoe UI", system-ui, sans-serif; height:100%; overflow:hidden; }
+  #brand { text-align:center; padding:10px; background:#0e1116; border-bottom:1px solid #1e2732; position:fixed; top:0; left:0; width:100%; z-index:1000; box-sizing:border-box; }
+  #brand .icon { font-size:22px; vertical-align:middle; margin-left:6px; }
+  #brand b { font-size:18px; font-weight:700; letter-spacing:.1em; color:#38bdf8; vertical-align:middle; display:inline-block; }
+  #brand .info { font-size:12px; color:#94a3b8; margin-top:2px; font-weight:normal; }
+  #content { margin-top:65px; padding:20px; text-align:center; }
+  .btn { background:#38bdf8; color:#0b0d10; border:none; padding:12px 24px; font-size:16px; font-weight:bold; border-radius:6px; cursor:pointer; margin:10px; }
+  .btn:hover { background:#0ea5e9; }
+  #msgs { margin-top:15px; font-size:14px; color:#7fd0a0; }
 </style>
+<script src="jb.js"></script>
+<script src="core.js"></script>
 </head>
 <body>
+
 <div id="brand">
   <span class="icon">🎮</span>
   <b>PC MAX</b>
   <div class="info">إشراف: خليل | 📞 0937200365</div>
 </div>
+
+<div id="content">
+  <h2 id="atext" style="color:#f8fafc; font-size:20px; margin-bottom:10px;">جاري تحميل نظام التعديل...</h2>
+  <div id="msgs">يرجى الانتظار قليلاً حتى تكتمل الثغرة</div>
+  <br>
+  <button class="btn" onclick="load_goldhen()">تفعيل GoldHEN</button>
+</div>
+
+<script>
+  function load_goldhen() {
+    document.getElementById("msgs.innerHTML} = "جاري تفعيل الحماية وتثبيت الـ Payload...";
+    // استدعاء ملف الـ payload أو التعديلة الموجود في المستودع
+    var script = document.createElement('script');
+    script.src = 'goldhen.bin'; // أو اسم ملف التشغيل لديك
+    document.body.appendChild(script);
+  }
+</script>
+
+</body>
+</html>
